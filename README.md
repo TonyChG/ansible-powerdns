@@ -12,7 +12,7 @@ PowerDNS is use to create a domain.local DNS zone.
 - ```vagrant```
 - ```nfs-utils``` (optionnel)
 
-## Preréquis
+## If you want nfs
 
 ```
 > systemctl start nfs-server
