@@ -1,0 +1,56 @@
+---
+- name: Add epel-release
+  yum:
+    name: epel-release
+    state: present
+
+- name: Ensure old versions of PowerDNS are not installed.
+  package:
+    name: '{{ item }}'
+    state: absent
+  with_items:
+    - mariadb
+    - mariadb-server
+    - pdns
+    - pdns-backend-mysql
+
+- name: Add PowerDNS dependencies
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - mariadb
+      - mariadb-server
+
+- name: Add PowerDNS
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - pdns
+      - pdns-backend-mysql
+
+- name: Start mariadb-server
+  service:
+    name: mariadb.service
+    state: started
+
+- name: Create database template
+  template:
+    src: pdns.sql
+    dest: /tmp/pdns.sql
+
+- name: Create database
+  shell: mysql -uroot < /tmp/pdns.sql
+  args:
+    executable: /bin/bash
+
+- name: Push pdns.conf
+  template:
+    src: pdns.conf
+    dest: /etc/pdns/pdns.conf
+
+- name: Start pdns.service
+  service:
+    name: pdns.service
+    state: started

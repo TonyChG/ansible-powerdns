@@ -1,0 +1,24 @@
+
+# Globals
+default_user: "vagrant"
+default_zone: "domain.local"
+
+# Docker
+docker_yum_repo_url: "https://download.docker.com/linux/centos/docker-ce.repo"
+docker_compose_url: "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-Linux-x86_64"
+docker_yum_repo_enable_edge: false
+docker_yum_repo_enable_test: false
+docker_edition: "ce"
+docker_ip: "172.16.2.4"
+docker_hostname: "docker"
+
+# PowerDNS database
+pdns_mysql_user: "pdns"
+pdns_mysql_password: "password1"
+pdns_mysql_database: "pdns"
+
+pdns_auth_ip: "172.16.2.3"
+pdns_hostname: "ns1"
+
+# Client
+client_ip: "172.16.2.50"

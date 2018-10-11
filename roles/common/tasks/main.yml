@@ -1,0 +1,25 @@
+---
+- name: Disable NetworkManager
+  service:
+    name: NetworkManager.service
+    state: stopped
+
+- name: Add bind-utils
+  yum:
+    name: bind-utils
+    state: present
+
+- name: Add net-tools
+  yum:
+    name: net-tools
+    state: present
+
+- name: Add vim
+  yum:
+    name: vim
+    state: present
+
+- name: Push resolv.conf
+  template:
+    src: resolv.conf
+    dest: /etc/resolv.conf
