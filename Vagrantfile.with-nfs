@@ -30,7 +30,7 @@ cluster.vm.define "ns1" do |config|
             "tag_Common" => ["ns1"]
         }
     end
-#    config.vm.synced_folder ".", "/data", type: "nfs"
+    config.vm.synced_folder ".", "/data", type: "nfs"
 end
 
 # Docker Host
@@ -49,7 +49,7 @@ cluster.vm.define "docker" do |config|
             "tag_Common" => ["docker"]
         }
     end
-#    config.vm.synced_folder ".", "/data", type: "nfs"
+    config.vm.synced_folder ".", "/data", type: "nfs"
 end
 
 # Test Client
@@ -67,7 +67,7 @@ cluster.vm.define "client" do |config|
             "tag_Common" => ["client"]
         }
     end
-#    config.vm.synced_folder ".", "/data", type: "nfs"
+    config.vm.synced_folder ".", "/data", type: "nfs"
 end
 
 end

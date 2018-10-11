@@ -15,6 +15,7 @@ PowerDNS is use to create a domain.local DNS zone.
 ## If you want nfs
 
 ```
+> mv Vagrantfile.with-nfs Vagrantfile
 > systemctl start nfs-server
 # On error nfs version
 > journalctl -u nfs-server -f
